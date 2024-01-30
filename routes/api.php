@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
@@ -44,3 +45,9 @@ Route::post('servico/pesquisarNome',[ServicoController::class, 'pesquisaPorNome'
 Route::delete('servico/deletar/{id}',[ServicoController::class, 'excluir']);
 Route::put('servico/atualizar', [ServicoController::class, 'update']);
 Route::get('servico/retornarTodos', [ServicoController::class, 'retornarTodos']);
+//adm
+Route::post('adm/cadastro', [AdmController::class, 'ADMcadastro']);
+Route::delete('adm/delete/{id}', [ADMController::class, 'excluir']);
+Route::put('adm/update', [ADMController::class, 'update']);
+Route::post('adm/pesquisaNome', [ADMController::class, 'pesquisarPorNome']);
+Route::post('adm/senha/redefinir',[ADMController::class, 'redefinirSenha']);

@@ -10,84 +10,52 @@ class ADMFormRequestUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    /** 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'nome' => 'required|max:120|min:5',
+            'email' => 'required|email|unique:cliente_models,email',
+            'cpf' => 'required|max:11|min:11|unique:cliente_models,cpf',
+            'password' => 'required',
+        ];
+    }
 
-     * Get the validation rules that apply to the request. 
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'error' => $validator->errors()
+        ]));
+    }
+    public function messages(){
 
-     * 
+        return[
+            'nome.required' => 'o nome é obrigatorio',
+            'nome.max' => 'o campo nome deve contar no maximo 120 caracteres',
+            'nome.min' => 'o campo nome deve contar no minimo 5 caracteres',
+            
+            'email.required' => 'o email é obrigatorio',
+            'email.email' => 'formato de email invalido',
+            'email.unique' => 'email ja cadastrado no sistema',
 
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string> 
-
-     */ 
-
-    public function rules(): array 
-
-    { 
-
-        return [ 
-
-            'nome' => 'required|max:80|min:5|unique:servicos,nome,'. $this->id, 
-
-            'descricao' => 'required|max:200|min:10', 
-
-            'duracao' => 'required|numeric', 
-
-            'preco' => 'required|decimal:2', 
-
-        ]; 
-
-    } 
-
- 
-
-    public function failedValidation(Validator $validator) 
-    { 
-        throw new HttpResponseException(response()->json([ 
-
-            'success' => false, 
-
-            'error' => $validator->errors() 
-
-        ])); 
-
-    } 
-
-    public function messages(){ 
-
- 
-
-        return[ 
-
-            'nome.required' => 'O campo nome é obrigatorio', 
-
-            'nome.max' => 'O campo nome deve ter no maximo 80 caracteres', 
-
-            'nome.min' => 'O campo nome deve ter no minimo 5 caracteres', 
-
-            'nome.unique' => 'nome já cadastrado no sistema', 
-
-            'descricao.required' => 'O campo descricao é obrigatorio', 
-
-            'descricao.max' => 'O campo descricao deve ter no maximo 200 caracteres', 
-
-            'descricao.min' => 'O campo descricao deve ter no minimo 10 caracteres', 
-
-            'duracao.required' => 'O campo duracao é obrigatorio', 
-
-            'duracao.numeric' => 'O campo duração deve ter apenas numeros', 
-
-            'preco.required' => 'O campo preco é obrigatorio', 
-
-            'preco.decimal' => 'O campo preco deve ter apenas numeros', 
-
-        ]; 
-
-    } 
-
-} 
+            'cpf.required' => 'o cpf é obrigatorio',
+            'cpf.max' => 'o campo cpf deve contar no maximo 11 caracteres',
+            'cpf.min' => 'o campo cpf deve contar no minimo 11 caracteres',
+           
+            'password.required' => 'a senha obrigatorio'
+        ];
+    }
+}
