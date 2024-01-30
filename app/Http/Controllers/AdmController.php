@@ -7,7 +7,7 @@ use App\Models\ADM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AdmCintroller extends Controller
+class AdmController extends Controller
 {
     public function store(ADMFormRequest $request) 
 

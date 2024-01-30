@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,11 @@ Route::put('profissional/atualizar', [ProfissionalController::class, 'update']);
 Route::post('agenda/criar', [AgendaController::class, 'criarAgenda']);
 Route::post('agenda/criar/horario', [AgendaController::class, 'criarHorarioProfissional']);
 Route::post('agenda/pesquisaDataHora',[AgendaController::class, 'pesquisarPorDataDoProfissional']);
+
+//cliente
+Route::post('cliente/criar', [ClienteController::class, 'criarCliente']);
+Route::post('cliente/pesquisarPorNome',[ClienteController::class, 'pesquisaPorNome']);
+Route::put('cliente/esqueciSenha/{id}',[ClienteController::class, 'esqueciSenha']);
+Route::delete('cliente/delete/{id}',[ClienteController::class, 'exclui']);
+Route::put('cliente/update', [ClienteController::class, 'update']);
+Route::get('cliente/retornarTudo', [ClienteController::class, 'retornarTudo']);
