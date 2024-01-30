@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('numero',10)->nullable(false);
             $table->string('bairro',100)->nullable(false);
             $table->string('cep',8)->nullable(false);
-            $table->string('complemento',150)->nullable(false);
+            $table->string('complemento',150)->nullable(true);
             $table->string('password')->nullable(false);
             $table->timestamps();
         });

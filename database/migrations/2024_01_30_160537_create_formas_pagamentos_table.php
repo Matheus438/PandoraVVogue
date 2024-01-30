@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servicos', function (Blueprint $table) {
+        Schema::create('formas_pagamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 100)->unique()->nullable(false);
-            $table->string('descricao', 200)->nullable(false);
-            $table->integer('duracao', )->nullable(false);
-            $table->decimal ('preco', )->nullable(false);
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servicos');
+        Schema::dropIfExists('formas_pagamentos');
     }
 };

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
+use App\Http\Controllers\ServicoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,9 @@ Route::put('profissional/atualizar', [ProfissionalController::class, 'update']);
 Route::post('agenda/criar', [AgendaController::class, 'criarAgenda']);
 Route::post('agenda/criar/horario', [AgendaController::class, 'criarHorarioProfissional']);
 Route::post('agenda/pesquisaDataHora',[AgendaController::class, 'pesquisarPorDataDoProfissional']);
-
+Route::get('agenda/retornaTodos', [AgendaController::class, 'retornarTudo']);
+Route::delete('agenda/delete/{id}',[AgendaController::class, 'excluiAgenda']);
+Route::put('agenda/update', [AgendaController::class, 'updateAgenda']);
 //cliente
 Route::post('cliente/criar', [ClienteController::class, 'criarCliente']);
 Route::post('cliente/pesquisarPorNome',[ClienteController::class, 'pesquisaPorNome']);
@@ -35,3 +38,9 @@ Route::put('cliente/esqueciSenha/{id}',[ClienteController::class, 'esqueciSenha'
 Route::delete('cliente/delete/{id}',[ClienteController::class, 'exclui']);
 Route::put('cliente/update', [ClienteController::class, 'update']);
 Route::get('cliente/retornarTudo', [ClienteController::class, 'retornarTudo']);
+//serviço
+Route::post('servico/criar', [ServicoController::class, 'criarServico']);
+Route::post('servico/pesquisarNome',[ServicoController::class, 'pesquisaPorNome']);
+Route::delete('servico/deletar/{id}',[ServicoController::class, 'excluir']);
+Route::put('servico/atualizar', [ServicoController::class, 'update']);
+Route::get('servico/retornarTodos', [ServicoController::class, 'retornarTodos']);
