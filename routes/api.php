@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdmController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FormasPagamentoController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
+use App\Models\FormasPagamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +53,9 @@ Route::delete('adm/delete/{id}', [ADMController::class, 'excluir']);
 Route::put('adm/update', [ADMController::class, 'update']);
 Route::post('adm/pesquisaNome', [ADMController::class, 'pesquisarPorNome']);
 Route::post('adm/senha/redefinir',[ADMController::class, 'redefinirSenha']);
+
+//formas de pagamento
+ROute::post('formaPagamento/criar', [FormasPagamentoController::class, 'cadastroTipoPagamento']);
+Route::get('formaPagamento/PesquisarNome', [FormasPagamentoController::class, 'pesquisarPorTipoPagamento']);
+Route::delete('formaPagamento/deletar/{id}', [FormasPagamentoController::class, 'exclui']);
+Route::put('formaPagamento/update', [FormasPagamentoController::class, 'updatepagamento']);

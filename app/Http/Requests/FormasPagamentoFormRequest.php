@@ -50,7 +50,7 @@ class FormasPagamentoFormRequest extends FormRequest
 
         return [ 
 
-            'nome' => 'required|unique:tipo_pagamentos,nome|max:120|min:2', 
+            'nome' => 'required|unique:formas_pagamentos,nome|max:120|min:2', 
 
             'taxa'=>'required|max:120|min:3', 
 

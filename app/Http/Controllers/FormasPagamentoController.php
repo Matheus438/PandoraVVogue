@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
  
 
-class PagamentoController extends Controller 
+class FormasPagamentoController extends Controller 
 
 { 
 
@@ -82,39 +82,25 @@ class PagamentoController extends Controller
 
      
 
-    public function deletarpagamento($pagamento) 
+    public function exclui($id)
+    {
+        
+        $pagamento = FormasPagamento::find($id);
+        if (!isset($pagamento)) {
+            return response()->json([
+                'status' => false,
+                'message' => "Forma de pagamento não encontrado"
+            ]);
+        }
 
-    { 
+        $pagamento->delete();
+        return response()->json([
+            'status' => true,
+            'message' => "Forma de pagamento excluído com sucesso"
+        ]);
+    }
 
-        $pagamento = FormasPagamento::find($pagamento); 
-
-         
-
-        if (!isset($pagamento)) { 
-
-            return response()->json([ 
-
-         'status' => false, 
-
-         'message' => "Pagamento não encontrado"]); 
-
-        } 
-
-         
-
-        $pagamento->delete(); 
-
-         
-
-        return response()->json(([ 
-
-            'status' => true, 
-
-            'message' =>  "Pagamento excluído com êxito" 
-
-        ])); 
-
-    } 
+    
 
      
 
