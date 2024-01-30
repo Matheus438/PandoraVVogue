@@ -1,66 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center"> Pandora Vogue Velvet </h1> 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"> 
 
-## About Laravel
+<img src="Pandora VV.jpg" alt="LOGO"> 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</p> 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Índice  
 
-## Learning Laravel
+* [Descrição do Projeto](#descrição-do-projeto) 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* [Status do Projeto](#status-do-Projeto) 
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação) 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* [Acesso ao Projeto](#acesso-ao-projeto) 
 
-## Laravel Sponsors
+* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras) 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+ 
 
-### Premium Partners
+ 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+<h2 align="center">Descrição do Projeto</h2> 
 
-## Contributing
+Na mitologia grega Pandora foi uma mulher criada pelos deuses para ter diversas qualidades como graça, beleza, inteligência, paciência e meiguice, nós como salão temos a finalidade de deixar nossos clientes belos como Pandora. Já os complementos Vogue e Velvet é por conta de sua elegância. Esse projeto tem como objetivo facilitar o desenvolvimento e realizar um site de um salão de beleza unisex fictícia feito por estudantes da escola SESI, para aprofundar nossos conhecimentos nas linguagens PHP e Json. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<hr> 
 
-## Code of Conduct
+ 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<p align="center"> 
 
-## Security Vulnerabilities
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=7159c1&style=for-the-badge"/> 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+</p> 
 
-## License
+<hr> 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ 
+
+# :hammer: Funcionalidades do projeto 
+
+* ✔️`Funcionalidade 1`: Realizar cadastro dos clientes, podendo ser paciente ou profissional. Realizar cadastro de serviços e profissionais. 
+
+* ✔️`Funcionalidade 2`: Armazenar dados dos clientes e agendamentos dos mesmos.  
+
+* ✔️`Funcionalidade 3`: Funções de recuperar senha de clientes e profissionais. 
+
+ 
+
+ # 📁 Acesso ao projeto 
+
+ - git clone https://github.com/marileoncio/PandoraVV.git 
+
+ 
+
+# 🛠️ Abrir e rodar o projeto 
+
+- cd PandoraVV 
+
+- code . 
+
+- composer update 
+
+- copy .env.example .env 
+
+- php artisan migrate 
+
+- git config --global user.name "marileoncio" 
+
+- git config --global user.email "mariana.timoteo19@yahoo.com" 
+
+- php artisan serve 
+
+ 
+
+# Desenvedores do projeto  
+
+* [Emilly Gabriele](https://github.com/EmyyS2) 
+
+* [Giovanna Florencio](https://github.com/nanaflorencci) 
+
+* [Mariana Leoncio](https://github.com/marileoncio) 
+
+* [Matheus Bispo](https://github.com/Matheus438) 
+
+ v
