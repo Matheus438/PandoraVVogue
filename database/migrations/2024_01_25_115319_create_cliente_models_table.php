@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('celular',11)->unique()->nullable(false);
             $table->string('email',120)->unique()->nullable(false);
             $table->string('cpf',11)->unique()->nullable(false);
-            $table->date('dataNascimento')->nullable(false);
+            $table->date('nascimento')->nullable(false);
             $table->string('cidade',120)->nullable(false);
             $table->string('estado',2)->nullable(false);
             $table->string('pais',80)->nullable(false);
