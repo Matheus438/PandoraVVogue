@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('formas_pagamentos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome', )->unique()->nullable(false);
+            $table->string('taxa', )->nullable(false);
             $table->timestamps();
         });
     }
