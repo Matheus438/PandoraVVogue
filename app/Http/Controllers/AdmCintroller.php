@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ClienteFormrequest;
-use App\Models\ClienteModel;
+use App\Http\Requests\ADMFormRequest;
+use App\Models\ADM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ClienteController extends Controller
+class AdmCintroller extends Controller
 {
-    public function store(ClienteFormrequest $request) 
+    public function store(ADMFormRequest $request) 
 
     { 
 
-        $cliente = ClienteModel::create([ 
+        $ADM = ADM::create([ 
 
             'nome' => $request->nome, 
 
@@ -51,9 +51,9 @@ class ClienteController extends Controller
 
             "success" => true, 
 
-            "message" => "Cliente Cadrastado com sucesso", 
+            "message" => "ADM Cadrastado com sucesso", 
 
-            "data" => $cliente 
+            "data" => $ADM 
 
  
 
@@ -65,17 +65,17 @@ class ClienteController extends Controller
 
     { 
 
-        $Cliente = ClienteModel::where('email', $request->email)->first(); 
+        $ADM = ADM::where('email', $request->email)->first(); 
 
          
 
-        if (!isset($Cliente)) { 
+        if (!isset($ADM)) { 
 
             return response()->json([ 
 
                 'status' => false, 
 
-                'message' => "Cliente não encontrado!" 
+                'message' => "ADM não encontrado!" 
 
             ]); 
 
@@ -83,9 +83,9 @@ class ClienteController extends Controller
 
  
 
-        $Cliente->password = Hash::make($Cliente->cpf); 
+        $ADM->password = Hash::make($ADM->cpf); 
 
-        $Cliente->update();     
+        $ADM->update();     
 
  
 
@@ -101,4 +101,3 @@ class ClienteController extends Controller
 
 } 
 
- 

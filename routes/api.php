@@ -25,3 +25,4 @@ Route::put('profissional/atualizar', [ProfissionalController::class, 'update']);
 //agenda
 Route::post('agenda/criar', [AgendaController::class, 'criarAgenda']);
 Route::post('agenda/criar/horario', [AgendaController::class, 'criarHorarioProfissional']);
+Route::post('agenda/pesquisaDataHora',[AgendaController::class, 'pesquisarPorDataDoProfissional']);

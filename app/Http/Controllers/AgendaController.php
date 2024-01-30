@@ -50,4 +50,25 @@ class AgendaController extends Controller
             ], 200);
         }
     }
+    public function pesquisarPorDataDoProfissional(Request $request){
+        if ($request->profissional_Id == 0 || $request->profissional_Id ==''){
+            $agenda = Agenda::all();
+        } else {
+            $agenda = Agenda::where('profissional_Id', $request->profissional_Id);
+            if(isset($request->data_Hora)) {
+                $agenda->whereDate('data_Hora', '=', $request->data_Hora);
+            }
+            $agenda = $agenda-> get();
+        }
+        if(count($agenda) > 0) {
+            return response()->json([
+                'status' => true,
+                'data' => $agenda
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => 'Sem resultados para sua pesquisa.'
+        ]);
+    }
 }
