@@ -48,13 +48,10 @@ class FormasPagamentoFormRequest extends FormRequest
 
     { 
 
-        return [ 
-
-            'nome' => 'required|unique:formas_pagamentos,nome|max:120|min:2', 
-
-            'taxa'=>'required|max:120|min:3', 
-
-        ]; 
+        return [
+            'nome' => 'required|unique:formas_pagamentos,nome|max:120|min:2',
+            'taxa'=>'required|max:120|min:3',
+        ];
 
     } 
 
@@ -80,21 +77,14 @@ class FormasPagamentoFormRequest extends FormRequest
 
     { 
 
-        return [ 
-
-            'nome.required' => 'O campo nome é obrigatório', 
-
-            'nome.max' => 'O campo nome deve conter, no máximo, 120 caracteres', 
-
-            'nome.min' => 'O campo nome deve conter, no mínimo, 2 caracteres', 
-
-            'nome.unique' => 'este nome já foi cadastrado. Por favor, informe outro nome', 
-
-            'taxa.required' => 'O campo taxa é obrigatório', 
-
-            'taxa.max' => 'O campo taxa deve conter 120 caracteres', 
-
-        ]; 
+        return [
+            'nome.required' => 'O campo nome é obrigatório',
+            'nome.max' => 'O campo nome deve conter, no máximo, 120 caracteres',
+            'nome.min' => 'O campo nome deve conter, no mínimo, 2 caracteres',
+            'nome.unique' => 'este nome já foi cadastrado. Por favor, informe outro nome',
+            'taxa.required' => 'O campo taxa é obrigatório',
+            'taxa.max' => 'O campo taxa deve conter 120 caracteres',
+        ];
 
     } 
 

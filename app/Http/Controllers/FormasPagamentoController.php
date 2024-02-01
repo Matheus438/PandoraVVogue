@@ -9,7 +9,7 @@ use App\Http\Requests\FormasPagamentoFormRequestUpdate;
 use App\Http\Requests\PagamentoFormRequest; 
 
 use App\Http\Requests\PagamentoFormRequestUpdate;
-use App\Models\FormasPagamento;
+use App\Models\FormasPagamento;//pagamento
 use App\Models\Pagamento; 
 
 use Illuminate\Http\Request; 
@@ -22,143 +22,104 @@ class FormasPagamentoController extends Controller
 
     public function cadastroTipoPagamento(FormasPagamentoFormRequest $request) 
 
-    { 
-
-        $pagamento = FormasPagamento::create([ 
-
-            'nome' => $request->nome, 
-
-            'taxa' => $request->taxa, 
-
-        ]); 
-
- 
-
-        return response()->json([ 
-
-            "success" => true, 
-
-            "message" => "Pagamento cadastrado com êxito", 
-
-            "data" => $pagamento 
-
-        ], 200); 
-
-    } 
-
- 
-
-    public function pesquisarPorTipoPagamento(Request $request) 
-
-    { 
-
-        $pagamento = FormasPagamento::where('nome', 'like', '%' . $request->nome . '%')->get(); 
-
-         
-
-        if (count($pagamento)) { 
-
-            return response()->json([ 
-
-                'status' => true, 
-
-                'data' => $pagamento 
-
-            ]); 
-
-        } 
-
- 
-
-        return response()->json([ 
-
-            'status' => false, 
-
-            'data' => "Pagamento não encontrado" 
-
-        ]); 
-
-    } 
-
-     
-
-    public function exclui($id)
     {
-        
-        $pagamento = FormasPagamento::find($id);
+        $pagamento = Pagamento::create([
+            'nome' => $request->nome,
+            'taxa' => $request->taxa,
+        ]);
+
+        return response()->json([
+            "success" => true,
+            "message" => "Pagamento cadastrado com êxito",
+            "data" => $pagamento
+        ], 200);
+    }
+
+    public function pesquisarPorTipoPagamento(Request $request)
+    {
+        $pagamento = Pagamento::where('nome', 'like', '%' . $request->nome . '%')->get();
+
+        if (count($pagamento)) {
+            return response()->json([
+                'status' => true,
+                'data' => $pagamento
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'data' => "Pagamento não encontrado"
+        ]);
+    }
+
+    public function deletarpagamento($pagamento)
+    {
+        $pagamento = Pagamento::find($pagamento);
+
         if (!isset($pagamento)) {
             return response()->json([
                 'status' => false,
-                'message' => "Forma de pagamento não encontrado"
+                'message' => "Pagamento não encontrado"
             ]);
         }
 
         $pagamento->delete();
-        return response()->json([
+
+        return response()->json(([
             'status' => true,
-            'message' => "Forma de pagamento excluído com sucesso"
+            'message' =>  "Pagamento excluído com êxito"
+        ]));
+    }
+    public function updatepagamento(PagamentoFormRequestUpdate $request)
+
+    {
+
+        $pagamento = Pagamento::find($request->id);
+
+        if (!isset($pagamento)) {
+
+            return response()->json([
+
+                'status' => false,
+
+                'message' => 'Pagamento não encontrado'
+
+            ]);
+        }
+
+
+
+        if (isset($request->nome)) {
+
+            $pagamento->nome = $request->nome;
+        }
+
+
+
+        if (isset($request->taxa)) {
+
+            $pagamento->taxa = $request->taxa;
+        }
+
+
+
+        $pagamento->update();
+
+        return response()->json([
+
+            'status' => true,
+
+            'message' => 'Tipo de pagamento atualizado'
+
         ]);
     }
 
-    
-
-     
-
-    public function updatepagamento(FormasPagamentoFormRequestUpdate $request) 
-
-    { 
-
-        $pagamento = FormasPagamento::find($request->id); 
-
-        if (!isset($pagamento)) { 
-
-            return response()->json([ 
-
-                'status' => false, 
-
-                'message' => 'Pagamento não encontrado' 
-
-            ]); 
-
-        } 
-
-         
-
-        if (isset($request->nome)) { 
-
-            $pagamento->nome = $request->nome; 
-
-        } 
-
-         
-
-        if (isset($request->taxa)) { 
-
-            $pagamento->taxa = $request->taxa; 
-
-        } 
-
-         
-
-        $pagamento->update(); 
-
-        return response()->json([ 
-
-            'status' => true, 
-
-            'message' => 'Tipo de pagamento atualizado' 
-
-        ]); 
-
-    } 
-
-     
 
     public function visualizarCadastroTipoPagamento() 
 
     { 
 
-        $pagamento = FormasPagamento::all(); 
+        $pagamento = Pagamento::all(); 
 
         if (!isset($pagamento)) { 
 
