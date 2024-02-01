@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', )->unique()->nullable(false);
             $table->string('taxa', )->nullable(false);
+            $table->string('status', )->nullable(false);
             $table->timestamps();
         });
     }

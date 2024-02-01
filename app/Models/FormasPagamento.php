@@ -11,6 +11,7 @@ class FormasPagamento extends Model
     protected $fillable = [ 
 
         'nome', 
-        'taxa'
+        'taxa',
+        'status'
     ];
 }

@@ -26,6 +26,7 @@ class FormasPagamentoController extends Controller
         $pagamento = FormasPagamento::create([
             'nome' => $request->nome,
             'taxa' => $request->taxa,
+            'status' => $request->status
         ]);
 
         return response()->json([
@@ -132,9 +133,6 @@ class FormasPagamentoController extends Controller
             ]); 
 
         } 
-
-         
-
         return response()->json([ 
 
             'status' => true, 
@@ -144,6 +142,78 @@ class FormasPagamentoController extends Controller
         ]); 
 
     } 
+
+    
+
+ 
+
+
+
+
+
+
+    public function visualizarCadastroTipoPagamentoDesabilitado() 
+
+    { 
+
+        $pagamento = FormasPagamento::where('status','desabilitado')->get(); 
+
+        if (!isset($pagamento)) { 
+
+            return response()->json([ 
+
+                'status' => false, 
+
+                'message' => 'Não há registros no sistema' 
+
+            ]); 
+
+        } 
+        return response()->json([ 
+
+            'status' => true, 
+
+            'data' => $pagamento 
+
+        ]); 
+
+    } 
+
+
+
+
+
+
+
+    public function visualizarCadastroTipoPagamentoHabilitado() 
+
+    { 
+
+        $pagamento = FormasPagamento::where('status','habilitado')->get(); 
+
+        if (!isset($pagamento)) { 
+
+            return response()->json([ 
+
+                'status' => false, 
+
+                'message' => 'Não há registros no sistema' 
+
+            ]); 
+
+        } 
+        return response()->json([ 
+
+            'status' => true, 
+
+            'data' => $pagamento 
+
+        ]); 
+
+    } 
+
+
+
 
 } 
 

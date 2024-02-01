@@ -27,6 +27,7 @@ Route::put('profissional/esqueciSenha/{id}',[ProfissionalController::class, 'rec
 Route::post('profissional/pesquisarNome',[ProfissionalController::class, 'pesquisarPorNome']);
 Route::delete('profissional/deletar/{id}',[ProfissionalController::class, 'exclui']);
 Route::put('profissional/atualizar', [ProfissionalController::class, 'update']);
+
 //agenda
 Route::post('agenda/criar', [AgendaController::class, 'criarAgenda']);
 Route::post('agenda/criar/horario', [AgendaController::class, 'criarHorarioProfissional']);
@@ -34,6 +35,7 @@ Route::post('agenda/pesquisaDataHora',[AgendaController::class, 'pesquisarPorDat
 Route::get('agenda/retornaTodos', [AgendaController::class, 'retornarTudo']);
 Route::delete('agenda/delete/{id}',[AgendaController::class, 'excluiAgenda']);
 Route::put('agenda/update', [AgendaController::class, 'updateAgenda']);
+
 //cliente
 Route::post('cliente/criar', [ClienteController::class, 'criarCliente']);
 Route::post('cliente/pesquisarPorNome',[ClienteController::class, 'pesquisaPorNome']);
@@ -41,12 +43,14 @@ Route::put('cliente/esqueciSenha/{id}',[ClienteController::class, 'esqueciSenha'
 Route::delete('cliente/delete/{id}',[ClienteController::class, 'exclui']);
 Route::put('cliente/update', [ClienteController::class, 'update']);
 Route::get('cliente/retornarTudo', [ClienteController::class, 'retornarTudo']);
+
 //serviço
 Route::post('servico/criar', [ServicoController::class, 'criarServico']);
 Route::post('servico/pesquisarNome',[ServicoController::class, 'pesquisaPorNome']);
 Route::delete('servico/deletar/{id}',[ServicoController::class, 'excluir']);
 Route::put('servico/atualizar', [ServicoController::class, 'update']);
 Route::get('servico/retornarTodos', [ServicoController::class, 'retornarTodos']);
+
 //adm
 Route::post('adm/cadastro', [AdmController::class, 'ADMcadastro']);
 Route::delete('adm/delete/{id}', [ADMController::class, 'excluir']);
@@ -60,3 +64,5 @@ Route::get('formaPagamento/PesquisarNome', [FormasPagamentoController::class, 'p
 Route::delete('formaPagamento/deletar/{id}', [FormasPagamentoController::class, 'deletarpagamento']);
 Route::put('formaPagamento/update', [FormasPagamentoController::class, 'updatepagamento']);
 Route::get('visualizar/pagamento', [FormasPagamentoController::class,'visualizarCadastroTipoPagamento']);
+Route::get('visualizar/pagamentosAtivados',[FormasPagamentoController::class, 'visualizarCadastroTipoPagamentoHabilitado']);
+Route::get('visualizar/pagamentosDesativados',[FormasPagamentoController::class, 'visualizarCadastroTipoPagamentoDesabilitado']);

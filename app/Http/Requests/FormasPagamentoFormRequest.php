@@ -51,6 +51,7 @@ class FormasPagamentoFormRequest extends FormRequest
         return [
             'nome' => 'required|unique:formas_pagamentos,nome|max:120|min:2',
             'taxa'=>'required|max:120|min:3',
+            'status' => 'required|max:120|min:3',
         ];
 
     } 
@@ -84,6 +85,9 @@ class FormasPagamentoFormRequest extends FormRequest
             'nome.unique' => 'este nome já foi cadastrado. Por favor, informe outro nome',
             'taxa.required' => 'O campo taxa é obrigatório',
             'taxa.max' => 'O campo taxa deve conter 120 caracteres',
+            'status.required' => 'O campo status é obrigatório',
+            'status.max' => 'O campo status deve conter, no máximo, 120 caracteres',
+            'status.min' => 'O campo status deve conter, no mínimo, 3 caracteres',
         ];
 
     } 
