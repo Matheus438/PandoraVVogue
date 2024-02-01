@@ -57,6 +57,7 @@ Route::delete('adm/delete/{id}', [ADMController::class, 'excluir']);
 Route::put('adm/update', [ADMController::class, 'update']);
 Route::post('adm/pesquisaNome', [ADMController::class, 'pesquisarPorNome']);
 Route::post('adm/senha/redefinir',[ADMController::class, 'redefinirSenha']);
+Route::post('adm/cliente/cadastrar', [ClienteController::class, 'criarCliente']);
 
 //formas de pagamento
 ROute::post('formaPagamento/criar', [FormasPagamentoController::class, 'cadastroTipoPagamento']);
