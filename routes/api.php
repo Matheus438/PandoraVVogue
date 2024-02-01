@@ -57,5 +57,6 @@ Route::post('adm/senha/redefinir',[ADMController::class, 'redefinirSenha']);
 //formas de pagamento
 ROute::post('formaPagamento/criar', [FormasPagamentoController::class, 'cadastroTipoPagamento']);
 Route::get('formaPagamento/PesquisarNome', [FormasPagamentoController::class, 'pesquisarPorTipoPagamento']);
-Route::delete('formaPagamento/deletar/{id}', [FormasPagamentoController::class, 'exclui']);
+Route::delete('formaPagamento/deletar/{id}', [FormasPagamentoController::class, 'deletarpagamento']);
 Route::put('formaPagamento/update', [FormasPagamentoController::class, 'updatepagamento']);
+Route::get('visualizar/pagamento', [FormasPagamentoController::class,'visualizarCadastroTipoPagamento']);

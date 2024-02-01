@@ -13,7 +13,7 @@ class FormasPagamentoFormRequestUpdate extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class FormasPagamentoFormRequestUpdate extends FormRequest
     {
         return [ 
 
-            'nome' => 'required|unique:formas_pagamentos,nome|max:120|min:2', 
+            'nome' => 'required|max:120|min:2', 
 
             'taxa'=>'required|max:120|min:3', 
 

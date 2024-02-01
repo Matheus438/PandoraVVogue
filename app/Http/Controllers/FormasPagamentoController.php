@@ -23,7 +23,7 @@ class FormasPagamentoController extends Controller
     public function cadastroTipoPagamento(FormasPagamentoFormRequest $request) 
 
     {
-        $pagamento = Pagamento::create([
+        $pagamento = FormasPagamento::create([
             'nome' => $request->nome,
             'taxa' => $request->taxa,
         ]);
@@ -37,7 +37,7 @@ class FormasPagamentoController extends Controller
 
     public function pesquisarPorTipoPagamento(Request $request)
     {
-        $pagamento = Pagamento::where('nome', 'like', '%' . $request->nome . '%')->get();
+        $pagamento = FormasPagamento::where('nome', 'like', '%' . $request->nome . '%')->get();
 
         if (count($pagamento)) {
             return response()->json([
@@ -54,7 +54,7 @@ class FormasPagamentoController extends Controller
 
     public function deletarpagamento($pagamento)
     {
-        $pagamento = Pagamento::find($pagamento);
+        $pagamento = FormasPagamento::find($pagamento);
 
         if (!isset($pagamento)) {
             return response()->json([
@@ -70,11 +70,11 @@ class FormasPagamentoController extends Controller
             'message' =>  "Pagamento excluído com êxito"
         ]));
     }
-    public function updatepagamento(PagamentoFormRequestUpdate $request)
+    public function updatepagamento(FormasPagamentoFormRequestUpdate $request)
 
     {
 
-        $pagamento = Pagamento::find($request->id);
+        $pagamento = FormasPagamento::find($request->id);
 
         if (!isset($pagamento)) {
 
@@ -119,7 +119,7 @@ class FormasPagamentoController extends Controller
 
     { 
 
-        $pagamento = Pagamento::all(); 
+        $pagamento = FormasPagamento::all(); 
 
         if (!isset($pagamento)) { 
 

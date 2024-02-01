@@ -107,8 +107,8 @@ class AgendaController extends Controller
         if(isset($request->profissionalId)){
         $agenda-> profissionalId = $request->profissionalId;
         }
-        if(isset($request->dataHora)){
-        $agenda-> dataHora = $request->dataHora;
+        if(isset($request->data_Hora)){
+        $agenda-> data_Hora = $request->data_Hora;
         }
         if(isset($request->servicoId)){
         $agenda-> servicoId = $request->servicoId;
