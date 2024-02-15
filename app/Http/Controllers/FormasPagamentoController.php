@@ -144,14 +144,6 @@ class FormasPagamentoController extends Controller
     } 
 
     
-
- 
-
-
-
-
-
-
     public function visualizarCadastroTipoPagamentoDesabilitado() 
 
     { 

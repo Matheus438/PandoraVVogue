@@ -4,34 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ADMFormRequest;
 use App\Http\Requests\ADMFormRequestUpdate;
-use App\Models\ADM;
+use App\Models\Adm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
 {
-    public function ADMcadastro(ADMFormRequest $request)
+    public function AdmCadastro(Request $request)
     {
-        $ADM = ADM::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'cpf' => $request->cpf,
-            'password' => Hash::make($request->senha),
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => "ADM cadastrado com sucesso",
-            'data' => $ADM
-        ], 200);
+        try {
+            $data = $request->all(); 
+            $data['password'] = Hash::make($request->password);
+            $response = Adm::create($data)->createToken($request->server('HTTP_USER_AGENT'))->plainTextToken;
+            return response()->json([
+                'status' => 'success',
+                'message' => "ADM cadastrado",
+                'token' => $response
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     
     public function redefinirSenha(Request $request)
     {
-        $ADM =  ADM::where('email', $request->email)->first();
-        $ADM =  ADM::where('cpf', $request->cpf)->first();
+        $ADM =  Adm::where('email', $request->email)->first();
+        $ADM =  Adm::where('cpf', $request->cpf)->first();
 
         if (!isset($ADM)) {
             return response()->json([
@@ -53,7 +56,7 @@ class AdmController extends Controller
 
     public function excluir($id)
     {
-        $ADM  = ADM ::find($id);
+        $ADM  = Adm ::find($id);
         if (!isset($ADM )) {
             return response()->json([
                 'status' => false,
@@ -71,7 +74,7 @@ class AdmController extends Controller
 
     public function pesquisarPorNome(Request $request)
     {
-        $ADM =  ADM::where('nome', 'like', '%' . $request->nome . '%')->get();
+        $ADM =  Adm::where('nome', 'like', '%' . $request->nome . '%')->get();
         if (count($ADM) > 0) {
             return response()->json([
                 'status' => true,
@@ -87,7 +90,7 @@ class AdmController extends Controller
 
     public function update(ADMFormRequestUpdate $request)
     {
-        $ADM  = ADM::find($request->id);
+        $ADM  = Adm::find($request->id);
 
         if (!isset($ADM )) {
             return response()->json([
@@ -150,13 +153,13 @@ class AdmController extends Controller
     public function login(Request $request)
     {
         try{
-            if (Auth::guard('admins')->attempt([
+            if (Auth::guard('ADM')->attempt([
                 'email' => $request->email,
                 'password' => $request->password 
             ])) {
-                $user = Auth::guard('admins')->user();
+                $user = Auth::guard('ADM')->user();
 
-                $token = $user ->creatToken($request->server('HTTP_USER_AGENT', ['admins']))->plainTextToken;
+                $token = $user->createToken($request->server('HTTP_USER_AGENT', ['ADM']))->plainTextToken;
 
                 return response()->json([
                     'status' => true,

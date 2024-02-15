@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\ADM;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class VerifyAdminGuard
@@ -15,6 +17,14 @@ class VerifyAdminGuard
      */
     public function handle(Request $request, Closure $next): Response
     {
+        //funçao para barrar usuarios sem instancia de adm
+        if(!Auth::user()instanceof ADM){
+            return response()->json([
+                'status'=> false,
+                'message'=>'não é uma instancia de adm'
+            ]);
+        }
+
         return $next($request);
     }
 }

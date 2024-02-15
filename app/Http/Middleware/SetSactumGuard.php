@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Str;
 class SetSactumGuard
 {
     /**
@@ -15,10 +15,13 @@ class SetSactumGuard
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Str::startsWith($request->getRequestUri(), '/api/admin')){
-            config(['sactun'])
-        }
-
-        return $next($request);
-    }
+        //se a rota for /admin vai redirecionar para esse guard
+                if(Str::startsWith($request->getRequestUri(), '/api/adm')){
+                    config(['sanctun.guard'=> 'Adm']);
+                } else {
+                    return 'sem guard';
+                }
+        
+                return $next($request);
+            }
 }

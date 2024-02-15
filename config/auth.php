@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'ADM'=>[
+            'driver'=>'session',
+            'provider'=>'ADM'
+        ]
     ],
 
     /*
@@ -69,6 +73,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'ADM' => [
+            'driver'=> 'eloquent',
+            'model'=>App\Models\ADM::class
+        ]
     ],
 
     /*
