@@ -53,24 +53,27 @@ class ClienteController extends Controller
     }
 
     
-    public function esqueciSenha(Request $request)
+    public function redefinirSenha(Request $request)
     {
-        $cliente = ClienteModel::where('id', $request->id)->first();
+        $cliente =  ClienteModel::where('email', $request->email)->first();
+        $cliente =  ClienteModel::where('cpf', $request->cpf)->first();
 
-        if (isset($cliente)) {
-            $cliente->password = Hash::make($cliente->cpf);
-            $cliente->update();
+        if (!isset($cliente)) {
             return response()->json([
-                'status' => true,
-                'message' => 'senha redefinida.'
+                'status' => false,
+                'message' => "Cliente não encontrado"
             ]);
         }
 
+        $cliente->password = Hash::make($cliente->cpf);
+        $cliente->update();
+
         return response()->json([
-            'status' => true,
-            'message' => 'não foi possivel alterar a senha'
+            'status' => false,
+            'message' => "Sua senha foi atualizada"
         ]);
     }
+
 
    
     public function exclui($id)

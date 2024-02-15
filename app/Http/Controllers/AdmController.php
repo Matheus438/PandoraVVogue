@@ -26,10 +26,12 @@ class AdmController extends Controller
         ], 200);
     }
 
+    
     public function redefinirSenha(Request $request)
     {
         $ADM =  ADM::where('email', $request->email)->first();
-        
+        $ADM =  ADM::where('cpf', $request->cpf)->first();
+
         if (!isset($ADM)) {
             return response()->json([
                 'status' => false,
@@ -38,13 +40,14 @@ class AdmController extends Controller
         }
 
         $ADM->password = Hash::make($ADM->cpf);
-        $ADM->update();    
+        $ADM->update();
 
         return response()->json([
             'status' => false,
             'message' => "Sua senha foi atualizada"
         ]);
     }
+
 
 
     public function excluir($id)

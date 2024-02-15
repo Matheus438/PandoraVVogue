@@ -37,22 +37,28 @@ class ProfissionalController extends Controller
         ], 200);
     }
 
-    public function recuperarSenha(Request $request)
+    public function redefinirSenha(Request $request)
     {
-        $profissional = ProfissionalModel::where('id', $request->id)->first();
-        if (isset($profissional)) {
-            $profissional->password = Hash::make($profissional->cpf);
-            $profissional->update();
+        $profissional =  ProfissionalModel::where('email', $request->email)->first();
+        $profissional =  ProfissionalModel::where('cpf', $request->cpf)->first();
+
+        if (!isset($profissional)) {
             return response()->json([
-                'status' => true,
-                'message' => 'senha redefinid.'
+                'status' => false,
+                'message' => "profissional não encontrado"
             ]);
         }
+
+        $profissional->password = Hash::make($profissional->cpf);
+        $profissional->update();
+
         return response()->json([
             'status' => false,
-            'message' => 'não foi possivel alterar sua senha.'
+            'message' => "Sua senha foi atualizada"
         ]);
     }
+
+
     public function pesquisarPorNome(Request $request)
     {
         $profissional= ProfissionalModel::where('nome', 'like', '%' .$request->nome . '%')->get();
