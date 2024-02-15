@@ -6,6 +6,7 @@ use App\Http\Requests\ADMFormRequest;
 use App\Http\Requests\ADMFormRequestUpdate;
 use App\Models\ADM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
@@ -144,6 +145,41 @@ class AdmController extends Controller
             'status' => false,
             'message' => "ADM atualizado"
         ]);
+    }
+
+    public function login(Request $request)
+    {
+        try{
+            if (Auth::guard('admins')->attempt([
+                'email' => $request->email,
+                'password' => $request->password 
+            ])) {
+                $user = Auth::guard('admins')->user();
+
+                $token = $user ->creatToken($request->server('HTTP_USER_AGENT', ['admins']))->plainTextToken;
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'login efetuado com sucesso',
+                    'token' => $token
+                ]);
+            } else {
+                return response()->json([
+                    'status'=> false,
+                    'message'=> 'credenciais incorretas'
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function verificarUsuarioLogado(Request $request)
+    {
+        return Auth::user();
     }
 
 } 

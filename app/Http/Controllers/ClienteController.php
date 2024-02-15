@@ -7,6 +7,7 @@ use App\Http\Requests\ClienteFormRequestUpdate;
 use App\Models\cliente;
 use App\Models\ClienteModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
@@ -171,4 +172,5 @@ class ClienteController extends Controller
         ]);
        }
     
+  
 }
